@@ -1,0 +1,8 @@
+MLI_week_2_venv/
+__pycache__/
+*.pyc
+*.pt
+test.ipynb
+.env
+*.pkl
+
