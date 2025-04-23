@@ -1,0 +1,42 @@
+_wandb:
+    value:
+        cli_version: 0.19.10
+        m: []
+        python_version: 3.13.1
+        t:
+            "1":
+                - 1
+                - 5
+                - 49
+                - 51
+                - 53
+                - 55
+            "2":
+                - 1
+                - 5
+                - 49
+                - 51
+                - 53
+                - 55
+            "3":
+                - 2
+                - 13
+                - 23
+                - 55
+                - 62
+            "4": 3.13.1
+            "5": 0.19.10
+            "8":
+                - 5
+            "12": 0.19.10
+            "13": darwin-arm64
+batch_size:
+    value: 300
+learning_rate:
+    value: 0.001
+margin:
+    value: 0.3
+model_type:
+    value: AvgPool
+num_epochs:
+    value: 5

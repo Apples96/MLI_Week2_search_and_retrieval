@@ -1,0 +1,16 @@
+{"time":"2025-04-23T18:55:59.975737+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/Users/milo/Desktop/Python projects/MLI/MLI Week 2/wandb/run-20250423_185559-jiii7hei/logs/debug-core.log"}
+{"time":"2025-04-23T18:56:00.304079+02:00","level":"INFO","msg":"created new stream","id":"jiii7hei"}
+{"time":"2025-04-23T18:56:00.304108+02:00","level":"INFO","msg":"stream: started","id":"jiii7hei"}
+{"time":"2025-04-23T18:56:00.304112+02:00","level":"INFO","msg":"handler: started","stream_id":"jiii7hei"}
+{"time":"2025-04-23T18:56:00.304138+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"jiii7hei"}
+{"time":"2025-04-23T18:56:00.304157+02:00","level":"INFO","msg":"sender: started","stream_id":"jiii7hei"}
+{"time":"2025-04-23T18:56:00.642667+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-23T18:58:05.677403+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-23T18:58:05.677533+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-23T18:58:06.401707+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-23T18:58:06.687596+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 4-4, summary, console lines 46-66","runtime_seconds":0.285760083}],"total_operations":1}}
+{"time":"2025-04-23T18:58:06.72592+02:00","level":"INFO","msg":"stream: closing","id":"jiii7hei"}
+{"time":"2025-04-23T18:58:06.725942+02:00","level":"INFO","msg":"handler: closed","stream_id":"jiii7hei"}
+{"time":"2025-04-23T18:58:06.725957+02:00","level":"INFO","msg":"sender: closed","stream_id":"jiii7hei"}
+{"time":"2025-04-23T18:58:06.725957+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"jiii7hei"}
+{"time":"2025-04-23T18:58:06.726387+02:00","level":"INFO","msg":"stream: closed","id":"jiii7hei"}

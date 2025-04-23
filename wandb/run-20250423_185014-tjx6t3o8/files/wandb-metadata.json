@@ -1,0 +1,44 @@
+{
+  "os": "macOS-14.4.1-arm64-arm-64bit-Mach-O",
+  "python": "CPython 3.13.1",
+  "startedAt": "2025-04-23T16:50:14.069571Z",
+  "program": "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py",
+  "codePath": "D_dual_encoder_finetunehard.py",
+  "git": {
+    "remote": "https://github.com/Apples96/MLI_Week2_search_and_retrieval",
+    "commit": "d36ff41cbab8e24fb67293bf84637fabd3b1e46b"
+  },
+  "email": "milorignell@gmail.com",
+  "root": "/Users/milo/Desktop/Python projects/MLI/MLI Week 2",
+  "host": "MacBook-Pro-de-Admin-3.local",
+  "executable": "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/MLI_week_2_venv/bin/python",
+  "codePathLocal": "D_dual_encoder_finetunehard.py",
+  "cpu_count": 8,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "213836308480"
+    },
+    "/System/Volumes/Data": {
+      "total": "494384795648",
+      "used": "213836308480"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "cpu": {
+    "count": 8,
+    "countLogical": 8
+  },
+  "apple": {
+    "name": "Apple M3",
+    "ecpuCores": 4,
+    "pcpuCores": 4,
+    "gpuCores": 10,
+    "memoryGb": 16,
+    "swapTotalBytes": "9663676416",
+    "ramTotalBytes": "17179869184"
+  }
+}

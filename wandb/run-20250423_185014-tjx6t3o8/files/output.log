@@ -1,0 +1,26 @@
+Using device: cpu
+Traceback (most recent call last):
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 305, in <module>
+    maintrain()
+    ~~~~~~~~~^^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 280, in maintrain
+    train_losses, val_losses, best_metrics, query_tower, doc_tower = finetune_DualEncoder_on_hardnegatives(
+                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        train_loader,
+        ^^^^^^^^^^^^^
+    ...<5 lines>...
+        run_name=run_name
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 109, in finetune_DualEncoder_on_hardnegatives
+    pos_doc_embeddings = doc_tower(examples["pos_passage_tokens"])
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/MLI_week_2_venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/MLI_week_2_venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/B_dual_encoder_train.py", line 238, in forward
+    return DocEmbeddings
+           ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'DocEmbeddings' where it is not associated with a value

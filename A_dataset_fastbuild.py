@@ -114,11 +114,8 @@ def load_and_preprocess_data(version="v1.1", split="train", dataset_sample_size=
     with Pool(n_workers) as pool:
         # Process examples in chunks to show progress
         chunk_size = max(1, len(dataset) // (n_workers * 10))
-        for chunk_results in tqdm(
-            pool.imap(process_example, args, chunksize=chunk_size),
-            total=len(dataset),
-            desc="Preprocessing"
-        ):
+        iterator = pool.imap(process_example, chunksize=chunk_size)
+        for chunk_results in tqdm(iterator, total=len(dataset), desc="Preprocessing"):
             processed_data.extend(chunk_results)
     
     # Print sample of the dataset

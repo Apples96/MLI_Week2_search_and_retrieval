@@ -1,0 +1,31 @@
+/Users/milo/Desktop/Python projects/MLI/MLI Week 2/MLI_week_2_venv/lib/python3.13/site-packages/google/protobuf/internal/well_known_types.py:178: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  self.FromDatetime(datetime.datetime.utcnow())
+Using device: cpu
+Traceback (most recent call last):
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 295, in <module>
+    maintrain()
+    ~~~~~~~~~^^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 270, in maintrain
+    train_losses, val_losses, best_metrics, QryTower, DocTower = finetune_DualEncoder_on_hardnegatives(
+                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        train_loader,
+        ^^^^^^^^^^^^^
+    ...<5 lines>...
+        run_name=run_name
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 67, in finetune_DualEncoder_on_hardnegatives
+    DocTower, word2idx, idx2word = load_document_tower('doc_tower_avgpool.pt')
+                                   ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/B_dual_encoder_train.py", line 531, in load_document_tower
+    checkpoint = torch.load(filepath, map_location=device)
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/MLI_week_2_venv/lib/python3.13/site-packages/torch/serialization.py", line 1425, in load
+    with _open_file_like(f, "rb") as opened_file:
+         ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/MLI_week_2_venv/lib/python3.13/site-packages/torch/serialization.py", line 751, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/MLI_week_2_venv/lib/python3.13/site-packages/torch/serialization.py", line 732, in __init__
+    super().__init__(open(name, mode))
+                     ~~~~^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'doc_tower_avgpool.pt'

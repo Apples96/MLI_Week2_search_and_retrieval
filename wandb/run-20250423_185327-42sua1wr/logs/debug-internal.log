@@ -1,0 +1,15 @@
+{"time":"2025-04-23T18:53:27.891263+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/Users/milo/Desktop/Python projects/MLI/MLI Week 2/wandb/run-20250423_185327-42sua1wr/logs/debug-core.log"}
+{"time":"2025-04-23T18:53:28.227251+02:00","level":"INFO","msg":"created new stream","id":"42sua1wr"}
+{"time":"2025-04-23T18:53:28.227288+02:00","level":"INFO","msg":"stream: started","id":"42sua1wr"}
+{"time":"2025-04-23T18:53:28.22731+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"42sua1wr"}
+{"time":"2025-04-23T18:53:28.227443+02:00","level":"INFO","msg":"handler: started","stream_id":"42sua1wr"}
+{"time":"2025-04-23T18:53:28.227452+02:00","level":"INFO","msg":"sender: started","stream_id":"42sua1wr"}
+{"time":"2025-04-23T18:53:28.43873+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-23T18:53:55.508455+02:00","level":"INFO","msg":"stream: closing","id":"42sua1wr"}
+{"time":"2025-04-23T18:53:55.508943+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-23T18:53:55.508971+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-23T18:53:56.081197+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-23T18:53:56.273947+02:00","level":"INFO","msg":"handler: closed","stream_id":"42sua1wr"}
+{"time":"2025-04-23T18:53:56.273981+02:00","level":"INFO","msg":"sender: closed","stream_id":"42sua1wr"}
+{"time":"2025-04-23T18:53:56.274825+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"42sua1wr"}
+{"time":"2025-04-23T18:53:56.274899+02:00","level":"INFO","msg":"stream: closed","id":"42sua1wr"}

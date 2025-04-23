@@ -1,0 +1,19 @@
+Using device: cpu
+Traceback (most recent call last):
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 305, in <module>
+    maintrain()
+    ~~~~~~~~~^^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 280, in maintrain
+    train_losses, val_losses, best_metrics, QryTower, DocTower = finetune_DualEncoder_on_hardnegatives(
+                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        train_loader,
+        ^^^^^^^^^^^^^
+    ...<5 lines>...
+        run_name=run_name
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 75, in finetune_DualEncoder_on_hardnegatives
+    query_optimizer = torch.optim.Adam(QryTower.parameters(), lr = lr)
+                                       ~~~~~~~~~~~~~~~~~~~^^
+TypeError: Module.parameters() missing 1 required positional argument: 'self'

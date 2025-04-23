@@ -1,0 +1,87 @@
+Using device: cpu
+Epoch 1/5 - Train Loss: 0.4661, Train Accuracy: 0.1265
+Validation Loss: 0.5050
+Validation Metrics:
+  Accuracy: 0.0186
+  Precision: 1.0000
+  Recall: 0.0186
+  F1 Score: 0.0366
+  Mean Similarity Difference: -0.2050
+  Median Similarity Difference: -0.1515
+  % Positive > Negative: 1.86%
+New best model with validation loss: 0.5050
+Saving model to qrytower_hard.pt...
+Model saved to qrytower_hard.pt
+Saving model to doctower_hard.pt...
+Model saved to doctower_hard.pt
+Epoch 2/5 - Train Loss: 0.4186, Train Accuracy: 0.1904
+Validation Loss: 0.5011
+Validation Metrics:
+  Accuracy: 0.0311
+  Precision: 1.0000
+  Recall: 0.0311
+  F1 Score: 0.0602
+  Mean Similarity Difference: -0.2011
+  Median Similarity Difference: -0.1529
+  % Positive > Negative: 3.11%
+New best model with validation loss: 0.5011
+Saving model to qrytower_hard.pt...
+Model saved to qrytower_hard.pt
+Saving model to doctower_hard.pt...
+Model saved to doctower_hard.pt
+Epoch 3/5 - Train Loss: 0.3842, Train Accuracy: 0.2580
+Validation Loss: 0.4941
+Validation Metrics:
+  Accuracy: 0.0311
+  Precision: 1.0000
+  Recall: 0.0311
+  F1 Score: 0.0602
+  Mean Similarity Difference: -0.1941
+  Median Similarity Difference: -0.1412
+  % Positive > Negative: 3.11%
+New best model with validation loss: 0.4941
+Saving model to qrytower_hard.pt...
+Model saved to qrytower_hard.pt
+Saving model to doctower_hard.pt...
+Model saved to doctower_hard.pt
+Epoch 4/5 - Train Loss: 0.3397, Train Accuracy: 0.4054
+Validation Loss: 0.4865
+Validation Metrics:
+  Accuracy: 0.0435
+  Precision: 1.0000
+  Recall: 0.0435
+  F1 Score: 0.0833
+  Mean Similarity Difference: -0.1865
+  Median Similarity Difference: -0.1376
+  % Positive > Negative: 4.35%
+New best model with validation loss: 0.4865
+Saving model to qrytower_hard.pt...
+Model saved to qrytower_hard.pt
+Saving model to doctower_hard.pt...
+Model saved to doctower_hard.pt
+Epoch 5/5 - Train Loss: 0.3050, Train Accuracy: 0.5037
+Validation Loss: 0.4772
+Validation Metrics:
+  Accuracy: 0.0559
+  Precision: 1.0000
+  Recall: 0.0559
+  F1 Score: 0.1059
+  Mean Similarity Difference: -0.1772
+  Median Similarity Difference: -0.1378
+  % Positive > Negative: 5.59%
+New best model with validation loss: 0.4772
+Saving model to qrytower_hard.pt...
+Model saved to qrytower_hard.pt
+Saving model to doctower_hard.pt...
+Model saved to doctower_hard.pt
+
+Training complete!
+Best validation loss: 0.4772
+Best validation metrics:
+  val_accuracy: 0.0559
+  val_precision: 1.0000
+  val_recall: 0.0559
+  val_f1: 0.1059
+  mean_sim_diff: -0.1772
+  median_sim_diff: -0.1378
+  pct_positive_higher: 5.5901

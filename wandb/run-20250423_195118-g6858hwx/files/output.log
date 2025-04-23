@@ -1,0 +1,97 @@
+Using device: cpu
+[Epoch 1/5 - Batch 10/28 (35.7%) - Loss: 0.447044
+[Epoch 1/5 - Batch 20/28 (71.4%) - Loss: 0.411471
+Epoch 1/5 - Train Loss: 0.4151, Train Accuracy: 0.2329
+Validation Loss: 0.4425
+Validation Metrics:
+  Accuracy: 0.1815
+  Precision: 1.0000
+  Recall: 0.1815
+  F1 Score: 0.3072
+  Mean Similarity Difference: -0.1415
+  Median Similarity Difference: -0.1095
+  % Positive > Negative: 18.15%
+New best model with validation loss: 0.4425
+Saving model to qrytoweravg_hard.pt...
+Model saved to qrytoweravg_hard.pt
+Saving model to doctoweravg_hard.pt...
+Model saved to doctoweravg_hard.pt
+[Epoch 2/5 - Batch 10/28 (35.7%) - Loss: 0.333430
+[Epoch 2/5 - Batch 20/28 (71.4%) - Loss: 0.299518
+Epoch 2/5 - Train Loss: 0.3078, Train Accuracy: 0.4925
+Validation Loss: 0.3735
+Validation Metrics:
+  Accuracy: 0.3691
+  Precision: 1.0000
+  Recall: 0.3691
+  F1 Score: 0.5391
+  Mean Similarity Difference: -0.0727
+  Median Similarity Difference: -0.0539
+  % Positive > Negative: 36.91%
+New best model with validation loss: 0.3735
+Saving model to qrytoweravg_hard.pt...
+Model saved to qrytoweravg_hard.pt
+Saving model to doctoweravg_hard.pt...
+Model saved to doctoweravg_hard.pt
+[Epoch 3/5 - Batch 10/28 (35.7%) - Loss: 0.263341
+[Epoch 3/5 - Batch 20/28 (71.4%) - Loss: 0.242413
+Epoch 3/5 - Train Loss: 0.2432, Train Accuracy: 0.6340
+Validation Loss: 0.3268
+Validation Metrics:
+  Accuracy: 0.4665
+  Precision: 1.0000
+  Recall: 0.4665
+  F1 Score: 0.6362
+  Mean Similarity Difference: -0.0224
+  Median Similarity Difference: -0.0096
+  % Positive > Negative: 46.65%
+New best model with validation loss: 0.3268
+Saving model to qrytoweravg_hard.pt...
+Model saved to qrytoweravg_hard.pt
+Saving model to doctoweravg_hard.pt...
+Model saved to doctoweravg_hard.pt
+[Epoch 4/5 - Batch 10/28 (35.7%) - Loss: 0.203769
+[Epoch 4/5 - Batch 20/28 (71.4%) - Loss: 0.194913
+Epoch 4/5 - Train Loss: 0.1961, Train Accuracy: 0.7232
+Validation Loss: 0.2865
+Validation Metrics:
+  Accuracy: 0.5542
+  Precision: 1.0000
+  Recall: 0.5542
+  F1 Score: 0.7132
+  Mean Similarity Difference: 0.0257
+  Median Similarity Difference: 0.0290
+  % Positive > Negative: 55.42%
+New best model with validation loss: 0.2865
+Saving model to qrytoweravg_hard.pt...
+Model saved to qrytoweravg_hard.pt
+Saving model to doctoweravg_hard.pt...
+Model saved to doctoweravg_hard.pt
+[Epoch 5/5 - Batch 10/28 (35.7%) - Loss: 0.169182
+[Epoch 5/5 - Batch 20/28 (71.4%) - Loss: 0.159735
+Epoch 5/5 - Train Loss: 0.1610, Train Accuracy: 0.7858
+Validation Loss: 0.2676
+Validation Metrics:
+  Accuracy: 0.5871
+  Precision: 1.0000
+  Recall: 0.5871
+  F1 Score: 0.7398
+  Mean Similarity Difference: 0.0570
+  Median Similarity Difference: 0.0562
+  % Positive > Negative: 58.71%
+New best model with validation loss: 0.2676
+Saving model to qrytoweravg_hard.pt...
+Model saved to qrytoweravg_hard.pt
+Saving model to doctoweravg_hard.pt...
+Model saved to doctoweravg_hard.pt
+
+Training complete!
+Best validation loss: 0.2676
+Best validation metrics:
+  val_accuracy: 0.5871
+  val_precision: 1.0000
+  val_recall: 0.5871
+  val_f1: 0.7398
+  mean_sim_diff: 0.0570
+  median_sim_diff: 0.0562
+  pct_positive_higher: 58.7089

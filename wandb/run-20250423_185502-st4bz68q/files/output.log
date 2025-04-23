@@ -1,0 +1,20 @@
+Using device: cpu
+Epoch 1/5 - Train Loss: 0.4628, Train Accuracy: 0.1130
+Traceback (most recent call last):
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 311, in <module>
+    maintrain()
+    ~~~~~~~~~^^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 286, in maintrain
+    train_losses, val_losses, best_metrics, query_tower, doc_tower = finetune_DualEncoder_on_hardnegatives(
+                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        train_loader,
+        ^^^^^^^^^^^^^
+    ...<5 lines>...
+        run_name=run_name
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/milo/Desktop/Python projects/MLI/MLI Week 2/D_dual_encoder_finetunehard.py", line 169, in finetune_DualEncoder_on_hardnegatives
+    batch_dst_pos = F.cosine_similarity(examples['query_embeddings'], examples['pos_doc_embeddings'], dim=1)
+                                        ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'query_embeddings'

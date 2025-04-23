@@ -68,6 +68,7 @@ def search_weaviate(query_text, collection_name, top_k=5):
         search_results.append({
             "rank": i + 1,
             "text": obj.properties.get("text", "No text available"),
+
             "score": obj.metadata.certainty if hasattr(obj.metadata, "certainty") else None,
             "id": obj.uuid
         })

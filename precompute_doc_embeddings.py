@@ -146,7 +146,7 @@ def main():
     try:
         # Parameters
         MAX_PASSAGES = None  # Set to None for all passages, or a number for a subset
-        BATCH_SIZE = 64       # Batch size for processing
+        BATCH_SIZE = 1000       # Batch size for processing
         
         # Only process validation set for testing (much smaller than train)
         DATASET_SPLITS = ['validation']  # Use ['train', 'validation', 'test'] for all data
