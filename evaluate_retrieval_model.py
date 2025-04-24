@@ -37,7 +37,7 @@ def search_weaviate(query_text, collection_name, top_k=5):
     
     # Load query tower
     print("Loading query tower model...")
-    query_tower, word2idx, idx2word = load_query_tower(filepath="query_tower_avgpool.pt")
+    query_tower, word2idx, idx2word = load_query_tower(filepath="qrytoweravg_hard.pt")
     
     # Get query embedding
     print(f"Generating embedding for query: '{query_text}'")

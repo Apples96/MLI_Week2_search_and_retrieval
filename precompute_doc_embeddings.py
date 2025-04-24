@@ -15,7 +15,7 @@ load_dotenv()
 # Load document_tower model
 def load_doctower():
     print("Loading DocTower model...")
-    checkpoint = torch.load("document_tower_avgpool.pt", map_location=torch.device('cpu'))
+    checkpoint = torch.load("doctoweravg_hard.pt", map_location=torch.device('cpu'))
     embedding, word2idx, idx2word, embedding_dim = load_cbow_embedding()
     doc_tower = DocTower(embedding, embedding_dim, word2idx)
     doc_tower.load_state_dict(checkpoint['model_state_dict'])
@@ -53,12 +53,12 @@ def load_passages(max_passages=10000, dataset_splits=['validation']):
 def embed_passages(doc_tower, all_passages):
     with torch.no_grad():
         passages_embeddings = doc_tower(all_passages)
-    passages_and_embeddings = zip(passages_embeddings, all_passages)
+    passages_and_embeddings = list(zip(passages_embeddings, all_passages))
     return passages_and_embeddings
 
 
 # Embed passages in batches with progress tracking
-def upload(passages_and_embeddings, batch_size=64, collection_name=None):
+def upload_cloud(passages_and_embeddings, batch_size=64, collection_name=None):
     # Get environment variables
     weaviate_url = os.getenv("WEAVIATE_URL")
     weaviate_api_key = os.getenv("WEAVIATE_API_KEY")
@@ -114,7 +114,7 @@ def upload(passages_and_embeddings, batch_size=64, collection_name=None):
         print("Uploading to Weaviate...")
         with collection.batch.dynamic() as batch:
             batch_items = passages_and_embeddings[start_idx:end_idx]
-            for idx, (passage, embedding) in enumerate(batch_items):
+            for idx, (embedding, passage) in enumerate(batch_items):
                 # Convert the embedding tensor to a list
                 if hasattr(embedding, 'detach'):
                     embedding = embedding.detach().cpu().numpy().tolist()
@@ -142,6 +142,86 @@ def upload(passages_and_embeddings, batch_size=64, collection_name=None):
     client.close()
     print("Weaviate connection closed")
 
+
+
+
+def upload_local(passages_and_embeddings, batch_size=64, collection_name=None):
+    # Get environment variables
+    client = weaviate.connect_to_local()
+    
+    print(f"Connected to Weaviate: {client.is_ready()}")
+    
+    # Generate a collection name if not provided
+    if collection_name is None:
+        current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+        collection_name = f"doc_embeddings_avgpool_{current_time}"
+    
+    # Create collection
+    # Try to create the collection directly, and handle the case if it already exists
+    try:
+        print(f"Creating collection: {collection_name}")
+        client.collections.create(collection_name)
+        print(f"Created new collection: {collection_name}")
+    except Exception as e:
+        # If the collection already exists, this will cause an exception
+        if "already exists" in str(e).lower():
+            print(f"Collection {collection_name} already exists, using existing collection")
+        else:
+            print(f"Error creating collection: {str(e)}")
+            client.close()
+            return
+        
+    collection = client.collections.get(collection_name)
+    
+    # Calculate number of batches
+    total_batches = (len(passages_and_embeddings) - 1) // batch_size + 1
+    print(f"Processing {len(passages_and_embeddings)} passages in {total_batches} batches")
+    
+    # Process in batches
+    processed_count = 0
+    for batch_idx in range(total_batches):
+        start_idx = batch_idx * batch_size
+        end_idx = min(start_idx + batch_size, len(passages_and_embeddings))
+        
+        # Progress information
+        print(f"Processing batch {batch_idx+1}/{total_batches} ({start_idx}-{end_idx-1} of {len(passages_and_embeddings)} passages)")
+        
+        # Upload this batch immediately
+        print("Uploading to Weaviate...")
+        with collection.batch.dynamic() as batch:
+            batch_items = passages_and_embeddings[start_idx:end_idx]
+            for idx, (embedding, passage) in enumerate(batch_items):
+                # Convert the embedding tensor to a list
+                if hasattr(embedding, 'detach'):
+                    embedding = embedding.detach().cpu().numpy().tolist()
+                elif hasattr(embedding, 'numpy'):
+                    embedding = embedding.numpy().tolist()
+                
+                
+                batch.add_object(
+                    properties={"text": passage},
+                    vector=embedding
+                )
+                
+                if batch.number_errors > 10:
+                    print("Batch import stopped due to excessive errors.")
+                    break
+        
+        processed_count += batch_size
+        print(f"Progress: {processed_count}/{len(passages_and_embeddings)} passages processed ({processed_count/len(passages_and_embeddings)*100:.1f}%)")
+        
+        # Check for failures
+        failed_objects = collection.batch.failed_objects
+        if failed_objects:
+            print(f"Number of failed imports in this batch: {len(failed_objects)}")
+    
+    print(f"Successfully processed and uploaded {processed_count} passages into {collection_name}")
+    client.close()
+    print("Weaviate connection closed")
+
+
+
+
 def main():
     try:
         # Parameters
@@ -163,7 +243,8 @@ def main():
         passages_and_embeddings = embed_passages(doc_tower, passages)
 
         # Step 3: Process and upload in a streaming fashion (no pickle files)
-        upload(passages_and_embeddings, batch_size=BATCH_SIZE, collection_name=collection_name)
+        # upload_cloud(passages_and_embeddings, batch_size=BATCH_SIZE, collection_name=collection_name)
+        upload_local(passages_and_embeddings, batch_size=BATCH_SIZE, collection_name=collection_name)
         
         print("Process completed successfully!")
         
@@ -174,3 +255,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

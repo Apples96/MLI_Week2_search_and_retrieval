@@ -276,7 +276,7 @@ def save_tower_finetuned(model, word2idx, idx2word, filename):
     }, f"{filename}.pt")
     print(f"Model saved to {filename}.pt")
 
-def maintrain(train_sample_size=100, val_sample_size = 20, batch_size=300, num_epochs=5, lr=0.001, model_type="AvgPool", run_name=None):
+def maintrain(train_sample_size=None, val_sample_size = None, batch_size=300, num_epochs=5, lr=0.001, model_type="AvgPool", run_name=None):
     #1 Load CBOW embeddings
     embedding, word2idx, idx2word, embedding_dim = load_cbow_embedding()
     #2 Load dataset
