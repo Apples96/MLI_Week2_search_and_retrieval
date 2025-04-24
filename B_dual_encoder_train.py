@@ -65,6 +65,7 @@ class QryTower(nn.Module):
         self.embedding_dim = embedding_dim
         self.word2idx = word2idx
         self.device = device
+        self.model_type = model_type
 
         #Option 1 : average pooling and MLP + batch norm + drop out
         # Choose the tower types based on model_type parameter
@@ -88,7 +89,7 @@ class QryTower(nn.Module):
     
     def forward(self, batch_query_tokens, model_type = "AvgPool"):
         #Option 1 : average pooling and MLP + batch norm + drop out
-        if model_type == "AvgPool":
+        if self.model_type == "AvgPool":
         # Process an entire batch at once
             batch_size = len(batch_query_tokens)
             batch_embeddings = []
@@ -112,7 +113,7 @@ class QryTower(nn.Module):
             x = F.relu(x)
             x = self.dropout(x)
             QryEmbeddings = self.fc3(x)  # Shape: [batch_size, 1]
-        elif model_type == "RNN":
+        elif self.model_type == "RNN":
             #Option 2 : RNN + final FF layer + drop out
             # Optimization: Process all sequences in a single batch operation
             padded_indices, lengths = process_batch_tokens(batch_query_tokens, self.word2idx, device=self.device)
@@ -142,6 +143,7 @@ class DocTower(nn.Module):
         self.embedding_dim = embedding_dim
         self.word2idx = word2idx
         self.device = device
+        self.model_type = model_type
 
         if model_type == "AvgPool":
             #Option 1 : average pooling and MLP + batch norm + drop out
@@ -165,7 +167,7 @@ class DocTower(nn.Module):
     
     def forward(self, batch_passage_tokens, model_type = "AvgPool"):
         # #Option 1 : average pooling and MLP + batch norm + drop out
-        if model_type == "AvgPool":
+        if self.model_type == "AvgPool":
             # Process an entire batch at once
             batch_size = len(batch_passage_tokens)
             batch_embeddings = []
@@ -189,7 +191,7 @@ class DocTower(nn.Module):
             x = F.relu(x)
             x = self.dropout(x)
             DocEmbeddings = self.fc3(x)  # Shape: [batch_size, 1]
-        elif model_type == "RNN":
+        elif self.model_type == "RNN":
             #Option 2 : RNN + final FF layer + drop out
             # Optimization: Process all sequences in a single batch operation
             padded_indices, lengths = process_batch_tokens(batch_passage_tokens, self.word2idx, device=self.device)
@@ -319,7 +321,7 @@ def train_DualEncoder(train_loader, val_loader, model_type, batch_size=300, num_
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"Using device: {device}")
 
-    model = DualEncoder(model_type = model_type)
+    model = DualEncoder()
     model.to(device)
     
     optimizer = torch.optim.Adam(model.parameters(), lr = lr)
@@ -350,6 +352,8 @@ def train_DualEncoder(train_loader, val_loader, model_type, batch_size=300, num_
             optimizer.zero_grad()
 
             dst_dif = model(examples)
+
+            all_train_difs.extend(dst_dif.detach().cpu().numpy())
 
             loss = torch.max(torch.tensor(0.0).to(device), dst_mrg - dst_dif).mean()
 
@@ -536,7 +540,7 @@ def load_document_tower(filepath="document_tower.pt", device='cpu'):
     
     return doc_tower, checkpoint['word2idx'], checkpoint['idx2word']
 
-def maintrain(train_sample_size=None, val_sample_size=None, batch_size=300, num_epochs=5, lr=0.001, model_type="AvgPool", run_name=None):
+def maintrain(train_sample_size=1000, val_sample_size=1000, batch_size=300, num_epochs=2, lr=0.001, model_type="AvgPool", run_name=None):
     #1 Load CBOW embeddings
     embedding, word2idx, idx2word, embedding_dim = load_cbow_embedding()
     #2 Load dataset

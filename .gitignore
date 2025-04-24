@@ -5,8 +5,10 @@ __pycache__/
 test.ipynb
 .env
 *.pkl
-/models
-/datasets
+models/
+datasets/
+wandb/
+rabbit_hole/
 
 
 
