@@ -87,7 +87,7 @@ class QryTower(nn.Module):
         else:
             raise ValueError(f"Unknown model type: {model_type}. Expected 'AvgPool' or 'RNN'.")
     
-    def forward(self, batch_query_tokens, model_type = "AvgPool"):
+    def forward(self, batch_query_tokens):
         #Option 1 : average pooling and MLP + batch norm + drop out
         if self.model_type == "AvgPool":
         # Process an entire batch at once
@@ -165,7 +165,7 @@ class DocTower(nn.Module):
         else:
             raise ValueError(f"Unknown model type: {model_type}. Expected 'AvgPool' or 'RNN'.")
     
-    def forward(self, batch_passage_tokens, model_type = "AvgPool"):
+    def forward(self, batch_passage_tokens):
         # #Option 1 : average pooling and MLP + batch norm + drop out
         if self.model_type == "AvgPool":
             # Process an entire batch at once
@@ -540,7 +540,7 @@ def load_document_tower(filepath="document_tower.pt", device='cpu'):
     
     return doc_tower, checkpoint['word2idx'], checkpoint['idx2word']
 
-def maintrain(train_sample_size=1000, val_sample_size=1000, batch_size=300, num_epochs=2, lr=0.001, model_type="AvgPool", run_name=None):
+def maintrain(train_sample_size=100000, val_sample_size=1000, batch_size=300, num_epochs=2, lr=0.001, model_type="AvgPool", run_name=None):
     #1 Load CBOW embeddings
     embedding, word2idx, idx2word, embedding_dim = load_cbow_embedding()
     #2 Load dataset
